@@ -30,4 +30,4 @@ Contributing
 This is an open-source HTML project. Feel free to fork the repo, submit issues, and create pull requests for any enhancements.
 
 License
-This project is licensed under the Apache License.
+This project is licensed under the Apache License
