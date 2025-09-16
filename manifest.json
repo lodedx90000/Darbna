@@ -1,0 +1,21 @@
+{
+  "name": "My PWA Demo",
+  "short_name": "PWADemo",
+  "description": "A simple Progressive Web App example",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2196f3",
+  "icons": [
+    {
+      "src": "Kambla.jpg",
+      "sizes": "386x686",
+      "type": "image/png"
+    },
+    {
+      "src": "Kambla2.jpg",
+      "sizes": "480x640",
+      "type": "image/png"
+    }
+  ]
+}
