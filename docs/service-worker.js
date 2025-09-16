@@ -1,27 +1,41 @@
-const CACHE = 'pwa-demo-v1'; // bump to v2 for the update demo
+const CACHE = 'darbna-v2';   // bump this on each change
+
 const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './Kambla.jpg',
-  './Kambla2.jpg'
+  'index.html',
+  'manifest.json',
+  // include icons that the manifest references (good for offline install prompt)
+  'icons/icon-192x192.jpg',
+  'icons/icon-512x512.jpg',
+  // your extra images
+  'Kambla.jpg',
+  'Kambla2.jpg'
 ];
 
-self.addEventListener('install', (e) => {
-  // make new SW active ASAP
+self.addEventListener('install', (event) => {
   self.skipWaiting();
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    for (const url of ASSETS) {
+      try {
+        await cache.add(new Request(url, { cache: 'reload' }));
+      } catch (err) {
+        console.warn('[SW] Failed to cache:', url, err);
+      }
+    }
+  })());
 });
 
-self.addEventListener('activate', (e) => {
-  // claim clients so updates are immediate
-  e.waitUntil((async () => {
+self.addEventListener('activate', (event) => {
+  event.waitUntil((async () => {
     const keys = await caches.keys();
     await Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)));
     await self.clients.claim();
   })());
 });
 
-self.addEventListener('fetch', (e) => {
-  e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
+self.addEventListener('fetch', (event) => {
+  event.respondWith((async () => {
+    const cached = await caches.match(event.request);
+    return cached || fetch(event.request);
+  })());
 });
