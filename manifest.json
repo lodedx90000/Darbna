@@ -10,12 +10,12 @@
     {
       "src": "Kambla.jpg",
       "sizes": "386x686",
-      "type": "image/png"
+      "type": "image/jpg"
     },
     {
       "src": "Kambla2.jpg",
       "sizes": "480x640",
-      "type": "image/png"
+      "type": "image/jpg"
     }
   ]
 }
