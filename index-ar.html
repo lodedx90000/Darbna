@@ -1,286 +1,0 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>دربنا — مشاركة المشاوير بسهولة</title>
-  <meta name="description" content="دربنا يربط السائقين والركّاب لمشاركة المشاوير بأمان وتكلفة أقل داخل المدن وبينها." />
-
-  <!-- خطوط عربية -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- أيقونة -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
-
-  <!--
-    نشر سريع:
-    • GitHub Pages: ارفع الملفات ثم فعّل Pages من الإعدادات.
-    • Azure Static Web Apps: أنشئ SWA واشِر للمجلد. (لا حاجة لبناء)
-    لاحقاً اربط النماذج بواجهة API (MySQL) على Azure App Service.
-  -->
-</head>
-<body>
-  <a class="skip-link" href="#main">تخطي إلى المحتوى</a>
-
-  <header class="site-header">
-    <div class="container header-wrap">
-      <a class="brand" href="#">
-        <span class="brand-mark" aria-hidden="true">د</span>
-        <span class="brand-name">دربنا</span>
-      </a>
-
-      <nav class="nav">
-        <a href="#faqs">الأسئلة الشائعة</a>
-        <a href="#safety">السلامة</a>
-        <a href="#benefits">المزايا</a>
-        <a href="#how">كيف يعمل</a>
-      </nav>
-
-      <div class="cta-group">
-        <a class="btn btn-ghost" href="#signup">تسجيل الدخول</a>
-        <a class="btn" href="#signup">ابدأ الآن</a>
-        <a class="btn btn-ghost" href="index.html">En</a>
-      </div>
-    </div>
-  </header>
-
-  <main id="main">
-    <!-- البطل -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>شارك المشوار. وفّر المال. خفّف الازدحام.</h1>
-          <p class="lede">
-            يربط <strong>دربنا</strong> السائقين والركّاب المتجهين لنفس الطريق—لتكون رحلتك أوفر، أنظف، وألطف.
-          </p>
-
-          <form class="search-card" action="#" method="get" aria-label="ابحث عن مشاركة مشوار">
-            <div class="field">
-              <label for="from">من</label>
-              <input id="from" name="from" type="text" placeholder="مثال: ينبع الصناعية" required>
-            </div>
-            <div class="field">
-              <label for="to">إلى</label>
-              <input id="to" name="to" type="text" placeholder="مثال: المدينة المنورة" required>
-            </div>
-            <div class="field">
-              <label for="date">التاريخ</label>
-              <input id="date" name="date" type="date" required>
-            </div>
-            <button class="btn btn-wide" type="submit" aria-label="ابحث عن المشاوير">ابحث عن المشاوير</button>
-            <p class="tiny">* نموذج تجريبي — اربطه بقاعدة البيانات/‏واجهة API لاحقاً.</p>
-          </form>
-        </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <!-- رسم SVG بسيط -->
-          <svg viewBox="0 0 600 420" role="img" aria-label="أشخاص يشاركون سيارة">
-            <defs>
-              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="var(--brand-500)"/>
-                <stop offset="100%" stop-color="var(--brand-600)"/>
-              </linearGradient>
-            </defs>
-            <rect x="0" y="0" width="600" height="420" rx="24" fill="var(--surface-2)"/>
-            <circle cx="120" cy="140" r="48" fill="url(#g1)"/>
-            <circle cx="220" cy="100" r="24" fill="var(--brand-200)"/>
-            <circle cx="260" cy="160" r="18" fill="var(--brand-200)"/>
-            <rect x="120" y="230" width="360" height="120" rx="16" fill="var(--ink-900)"/>
-            <rect x="150" y="250" width="300" height="16" rx="8" fill="var(--surface-1)"/>
-            <rect x="150" y="275" width="260" height="12" rx="6" fill="var(--surface-1)"/>
-            <rect x="150" y="296" width="220" height="12" rx="6" fill="var(--surface-1)"/>
-            <g transform="translate(320,70)">
-              <rect x="0" y="0" width="220" height="140" rx="16" fill="var(--brand-500)"/>
-              <circle cx="50" cy="120" r="16" fill="var(--surface-1)"/>
-              <circle cx="170" cy="120" r="16" fill="var(--surface-1)"/>
-              <rect x="20" y="20" width="180" height="60" rx="12" fill="var(--surface-1)" opacity="0.2"/>
-              <rect x="60" y="30" width="100" height="10" rx="5" fill="var(--surface-1)"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- كيف يعمل -->
-    <section id="how" class="section">
-      <div class="container">
-        <h2 class="section-title">كيف يعمل دربنا</h2>
-        <div class="cards three">
-          <article class="card">
-            <div class="icon">🔎</div>
-            <h3>ابحث</h3>
-            <p>أدخل خط سيرك ووقتك. نطابقك مع سائقين أو ركّاب قريبين بذات الاتجاه.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🤝</div>
-            <h3>تطابق</h3>
-            <p>اختر شريك الرحلة مع ملفات موثّقة وتوزيع تكلفة واضح.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🚗</div>
-            <h3>اركب</h3>
-            <p>قابل شريكك في نقطة آمنة، شارك الرحلة، وامنح تقييمك بعد الوصول.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- المزايا -->
-    <section id="benefits" class="section alt">
-      <div class="container">
-        <h2 class="section-title">لماذا تختار دربنا؟</h2>
-        <div class="cards four">
-          <article class="card">
-            <h3>توفير التكلفة</h3>
-            <p>قسّم الوقود والرسوم. وفّر 30–60% شهرياً للمشاوير الدورية.</p>
-          </article>
-          <article class="card">
-            <h3>تقليل الازدحام</h3>
-            <p>سيارات أقل تعني طرقاً أسرع للجميع.</p>
-          </article>
-          <article class="card">
-            <h3>خفض الانبعاثات</h3>
-            <p>راكبان في سيارة واحدة قد يخفضان انبعاثات الفرد ~50%.</p>
-          </article>
-          <article class="card">
-            <h3>مجتمع واحد</h3>
-            <p>تعارف مع جيرانك وزملائك على نفس الطريق.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- السلامة -->
-    <section id="safety" class="section">
-      <div class="container">
-        <h2 class="section-title">السلامة أولاً</h2>
-        <div class="safety-grid">
-          <ul class="checklist">
-            <li>تأكيد رقم الجوال والبريد</li>
-            <li>رفع رخصة القيادة ومراجعة يدوية (قريباً)</li>
-            <li>نظام التقييمات والمراجعات</li>
-            <li>مشاركة تفاصيل الرحلة مع جهات موثوقة</li>
-          </ul>
-          <div class="notice">
-            <strong>ملاحظة:</strong> هذا نموذج واجهة فقط. أضف السياسات والشروط قبل الإطلاق.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- رحلات مميزة (ثابتة كتجربة) -->
-    <section class="section alt">
-      <div class="container">
-        <h2 class="section-title">رحلات مميزة</h2>
-        <div class="rides">
-          <article class="ride">
-            <div class="ride-meta">
-              <span class="tag">يومي</span>
-              <span class="tag tag-outline">3 مقاعد</span>
-            </div>
-            <h3>ينبع → المدينة</h3>
-            <p>الانطلاق 7:30 ص · العودة 5:00 م · أيام الأسبوع</p>
-            <button class="btn btn-ghost">اطلب مقعد</button>
-          </article>
-          <article class="ride">
-            <div class="ride-meta">
-              <span class="tag">مرّة واحدة</span>
-              <span class="tag tag-outline">مقعد واحد</span>
-            </div>
-            <h3>جدة → كاوست</h3>
-            <p>السبت · 9:00 ص</p>
-            <button class="btn btn-ghost">اطلب مقعد</button>
-          </article>
-          <article class="ride">
-            <div class="ride-meta">
-              <span class="tag">أسبوعي</span>
-              <span class="tag tag-outline">مقعدان</span>
-            </div>
-            <h3>الرياض (الشمال) → كافد</h3>
-            <p>الأحد–الخميس · 8:00 ص</p>
-            <button class="btn btn-ghost">اطلب مقعد</button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- التسجيل -->
-    <section id="signup" class="section">
-      <div class="container narrow">
-        <h2 class="section-title">ابدأ مشاركة المشاوير مع دربنا</h2>
-        <form class="stack-card" action="#" method="post">
-          <div class="field">
-            <label for="name">الاسم الكامل</label>
-            <input id="name" name="name" type="text" placeholder="اكتب اسمك" required>
-          </div>
-          <div class="field">
-            <label for="email">البريد الإلكتروني</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" required>
-          </div>
-          <div class="field">
-            <label for="role">دوري في المنصّة</label>
-            <select id="role" name="role" required>
-              <option value="">اختر…</option>
-              <option>سائق</option>
-              <option>راكب</option>
-              <option>الاثنان</option>
-            </select>
-          </div>
-          <button class="btn btn-wide" type="submit">إنشاء حساب</button>
-          <p class="tiny">هذا الإرسال لا يقوم بأي إجراء حالياً. اربطه بواجهة API لاحقاً.</p>
-        </form>
-      </div>
-    </section>
-
-    <!-- الأسئلة الشائعة -->
-    <section id="faqs" class="section alt">
-      <div class="container">
-        <h2 class="section-title">الأسئلة الشائعة</h2>
-        <div class="faq-grid">
-          <details class="faq">
-            <summary>هل دربنا مجاني؟</summary>
-            <p>إنشاء الحساب مجاني. تكلفة الرحلة تُقسَّم بين السائق والركاب.</p>
-          </details>
-          <details class="faq">
-            <summary>كيف تُحسب التكلفة؟</summary>
-            <p>يمكن تحديد حصة عادلة حسب المسافة والمقاعد. أضِف منطق الحساب لاحقاً على الخادم.</p>
-          </details>
-          <details class="faq">
-            <summary>هل الخدمة آمنة؟</summary>
-            <p>الملفات الموثّقة والتقييمات ومشاركة تفاصيل الرحلة ترفع مستوى الأمان.</p>
-          </details>
-          <details class="faq">
-            <summary>هل أحتاج تطبيق جوّال؟</summary>
-            <p>لا. هذا الموقع متجاوب ويعمل على أي جهاز. يمكن إضافة تطبيق لاحقاً.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="brand brand--footer">
-          <span class="brand-mark" aria-hidden="true">د</span>
-          <span class="brand-name">دربنا</span>
-        </div>
-        <p class="tiny">© <span id="year"></span> دربنا. جميع الحقوق محفوظة.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#">الخصوصية</a>
-        <a href="#">الشروط</a>
-        <a href="#">الدعم</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- سنة ديناميكية بسيطة -->
-  <script>
-    (function(){ try { document.getElementById('year').textContent = new Date().getFullYear(); } catch(e){} }());
-  </script>
-</body>
-</html>
