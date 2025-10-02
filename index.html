@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darbna - Share Your Journey, Share the Savings | Saudi Arabia's Trusted Carpooling Platform</title>
+    <meta name="description" content="Join Darbna, Saudi Arabia's premier carpooling platform. Connect with trusted drivers and passengers across Riyadh, Jeddah, and Dammam. Save money, reduce traffic, and build community.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+    
+    <style>
+        /* ========== CSS VARIABLES - EXACT COLOR PALETTE ========== */
+        :root {
+            /* Primary Colors - Exact as specified */
+            --primary-sky-blue: #4A90E2;
+            --secondary-sandy-beige: #F5E6D3;
+            --accent-mint-green: #48C9B0;
+            --accent-sunny-amber: #FFB74D;
+            --neutral-light: #FDFDFD;
+            --neutral-dark: #2C3E50;
+            --text-dark-gray: #333333;
+            --text-secondary: #555555;
+            
+            /* Extended palette for variations */
+            --sky-blue-light: #6BA3E8;
+            --sky-blue-dark: #3A7BD1;
+            --beige-light: #FAF2E7;
+            --mint-light: #6DD5BD;
+            --amber-light: #FFC36B;
+            
+            /* Spacing and sizing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-xxl: 4rem;
+            
+            /* Border radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            /* Shadows */
+            --shadow-soft: 0 4px 20px rgba(74, 144, 226, 0.1);
+            --shadow-medium: 0 8px 30px rgba(74, 144, 226, 0.15);
+            --shadow-strong: 0 12px 40px rgba(74, 144, 226, 0.2);
+            
+            /* Transitions */
+            --transition-fast: 200ms ease-in-out;
+            --transition-medium: 300ms ease-in-out;
+            --transition-slow: 500ms ease-in-out;
+        }
+        
+        /* ========== RESET & BASE STYLES ========== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark-gray);
+            background: linear-gradient(135deg, var(--primary-sky-blue) 0%, var(--secondary-sandy-beige) 100%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--neutral-dark);
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        
+        /* ========== LAYOUT COMPONENTS ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .section {
+            padding: var(--space-xxl) 0;
+        }
+        
+        .grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            min-height: 48px;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background: var(--primary-sky-blue);
+            color: white;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .btn-primary:hover {
+            background: var(--sky-blue-dark);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .btn-secondary {
+            background: var(--accent-sunny-amber);
+            color: white;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--amber-light);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-sky-blue);
+            border: 2px solid var(--primary-sky-blue);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-sky-blue);
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        /* ========== CARDS ========== */
+        .card {
+            background: var(--neutral-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-soft);
+            transition: all var(--transition-medium);
+            border: 1px solid rgba(74, 144, 226, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .card-icon.mint {
+            background: linear-gradient(135deg, var(--accent-mint-green), var(--mint-light));
+            color: white;
+        }
+        
+        .card-icon.amber {
+            background: linear-gradient(135deg, var(--accent-sunny-amber), var(--amber-light));
+            color: white;
+        }
+        
+        .card-icon.blue {
+            background: linear-gradient(135deg, var(--primary-sky-blue), var(--sky-blue-light));
+            color: white;
+        }
+        
+        /* ========== HEADER ========== */
+        .header {
+            background: rgba(253, 253, 253, 0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            text-decoration: none;
+            color: var(--neutral-dark);
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-sky-blue), var(--sky-blue-dark));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .nav {
+            display: flex;
+            gap: var(--space-lg);
+            list-style: none;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+        
+        .nav a:hover {
+            color: var(--primary-sky-blue);
+        }
+        
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-sky-blue);
+            transition: width var(--transition-medium);
+        }
+        
+        .nav a:hover::after {
+            width: 100%;
+        }
+        
+        .header-cta {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero {
+            padding: 120px 0 var(--space-xxl);
+            background: linear-gradient(135deg, var(--primary-sky-blue) 0%, var(--secondary-sandy-beige) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="m0 0h100v20z" fill="none"/><path d="m0 10c20-5 40-5 60 0s40 5 60 0v10h-120z" fill="rgba(255,255,255,0.05)"/></svg>') repeat-x;
+            background-size: 100px 20px;
+            animation: wave 10s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 100px; }
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: var(--space-xxl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text h1 {
+            color: white;
+            margin-bottom: var(--space-md);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--space-xl);
+            text-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .search-form {
+            background: var(--neutral-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-medium);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem;
+            border: 2px solid transparent;
+            border-radius: var(--radius-sm);
+            background: white;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-mint-green);
+            box-shadow: 0 0 0 3px rgba(72, 201, 176, 0.1);
+        }
+        
+        .hero-visual {
+            position: relative;
+        }
+        
+        .hero-illustration {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-strong);
+            background: var(--neutral-light);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* ========== HOW IT WORKS SECTION ========== */
+        .how-it-works {
+            background: var(--neutral-light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-xxl);
+        }
+        
+        .section-header h2 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            position: relative;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-sky-blue), var(--sky-blue-light));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto var(--space-md);
+            box-shadow: var(--shadow-soft);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: var(--shadow-soft); }
+            50% { box-shadow: var(--shadow-medium); }
+        }
+        
+        .step h3 {
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* ========== FEATURES SECTION ========== */
+        .features {
+            background: var(--secondary-sandy-beige);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .feature-card {
+            background: var(--neutral-light);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(72, 201, 176, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+        
+        /* ========== SAFETY SECTION ========== */
+        .safety {
+            background: var(--neutral-light);
+        }
+        
+        .safety-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xxl);
+            align-items: center;
+        }
+        
+        .safety-list {
+            list-style: none;
+        }
+        
+        .safety-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+            padding: var(--space-md);
+            background: rgba(72, 201, 176, 0.05);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--accent-mint-green);
+        }
+        
+        .safety-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-mint-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .trust-badge {
+            background: linear-gradient(135deg, var(--accent-mint-green), var(--mint-light));
+            color: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .trust-badge h3 {
+            color: white;
+            margin-bottom: var(--space-md);
+        }
+        
+        /* ========== TESTIMONIALS SECTION ========== */
+        .testimonials {
+            background: var(--secondary-sandy-beige);
+        }
+        
+        .testimonials-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .testimonial {
+            background: var(--neutral-light);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: var(--space-lg);
+            font-size: 4rem;
+            color: var(--primary-sky-blue);
+            font-weight: 700;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: var(--space-md);
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-sky-blue), var(--accent-mint-green));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 2px;
+        }
+        
+        .author-info .role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* ========== CTA SECTION ========== */
+        .final-cta {
+            background: linear-gradient(135deg, var(--neutral-dark), var(--primary-sky-blue));
+            color: white;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            color: white;
+            margin-bottom: var(--space-md);
+        }
+        
+        .final-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--neutral-dark);
+            color: white;
+            padding: var(--space-xxl) 0 var(--space-lg);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            padding: var(--space-xs) 0;
+            transition: all var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-mint-green);
+            padding-left: var(--space-xs);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* ========== MOBILE RESPONSIVENESS ========== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: var(--space-sm);
+                text-align: center;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+            }
+            
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .safety-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* ========== ACCESSIBILITY ========== */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus styles */
+        .btn:focus,
+        input:focus,
+        select:focus,
+        a:focus {
+            outline: 3px solid var(--accent-sunny-amber);
+            outline-offset: 2px;
+        }
+        
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* ========== CULTURAL TOUCHES ========== */
+        .geometric-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            opacity: 0.05;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--primary-sky-blue) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--accent-mint-green) 2px, transparent 2px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+        
+        /* ========== LOADING ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* ========== UTILITY CLASSES ========== */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .mb-lg { margin-bottom: var(--space-lg); }
+        .mt-lg { margin-top: var(--space-lg); }
+        .hidden { display: none; }
+        .visible { display: block; }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo" aria-label="Darbna - Home">
+                    <div class="logo-icon">د</div>
+                    <span>Darbna</span>
+                </a>
+                
+                <nav role="navigation" aria-label="Main navigation">
+                    <ul class="nav">
+                        <li><a href="#how-it-works">How it Works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#safety">Safety</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-cta">
+                    <a href="#" class="btn btn-outline">Sign In</a>
+                    <a href="#get-started" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" role="banner">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Share Your Journey, Share the Savings</h1>
+                        <p class="subtitle">Darbna connects trusted drivers and passengers across Saudi Arabia. Save money, reduce traffic, and create meaningful connections on every trip.</p>
+                        
+                        <div class="hero-cta">
+                            <a href="#get-started" class="btn btn-primary">Find a Ride</a>
+                            <a href="#get-started" class="btn btn-secondary">Offer a Ride</a>
+                        </div>
+                        
+                        <!-- Search Form -->
+                        <form class="search-form" role="search" aria-label="Search for rides">
+                            <div class="form-group">
+                                <label for="from">From</label>
+                                <input type="text" id="from" name="from" placeholder="e.g., Riyadh North" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="to">To</label>
+                                <input type="text" id="to" name="to" placeholder="e.g., King Fahd District" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passengers">Passengers</label>
+                                <select id="passengers" name="passengers">
+                                    <option value="1">1 passenger</option>
+                                    <option value="2">2 passengers</option>
+                                    <option value="3">3 passengers</option>
+                                    <option value="4">4+ passengers</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search Rides</button>
+                        </form>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <svg class="hero-illustration" viewBox="0 0 600 400" role="img" aria-label="Carpooling illustration">
+                            <defs>
+                                <linearGradient id="carGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4A90E2"/>
+                                    <stop offset="100%" style="stop-color:#48C9B0"/>
+                                </linearGradient>
+                                <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#F5E6D3"/>
+                                    <stop offset="100%" style="stop-color:#FFB74D"/>
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- Background -->
+                            <rect width="600" height="400" fill="#FDFDFD" rx="20"/>
+                            
+                            <!-- Road -->
+                            <path d="M0 300 Q150 280 300 300 Q450 320 600 300 L600 350 Q450 370 300 350 Q150 330 0 350 Z" fill="url(#roadGradient)"/>
+                            
+                            <!-- Cars -->
+                            <g transform="translate(100, 250)">
+                                <!-- Main car -->
+                                <rect x="0" y="0" width="120" height="60" rx="30" fill="url(#carGradient)"/>
+                                <circle cx="25" cy="65" r="12" fill="#2C3E50"/>
+                                <circle cx="95" cy="65" r="12" fill="#2C3E50"/>
+                                <rect x="10" y="10" width="100" height="25" rx="12" fill="rgba(255,255,255,0.3)"/>
+                                
+                                <!-- Passengers -->
+                                <circle cx="35" cy="30" r="8" fill="#FDFDFD"/>
+                                <circle cx="55" cy="30" r="8" fill="#FDFDFD"/>
+                                <circle cx="85" cy="30" r="8" fill="#FDFDFD"/>
+                            </g>
+                            
+                            <!-- Additional cars -->
+                            <g transform="translate(300, 260)">
+                                <rect x="0" y="0" width="100" height="50" rx="25" fill="#FFB74D"/>
+                                <circle cx="20" cy="55" r="10" fill="#2C3E50"/>
+                                <circle cx="80" cy="55" r="10" fill="#2C3E50"/>
+                            </g>
+                            
+                            <!-- Connection lines -->
+                            <path d="M160 280 Q200 260 240 280" stroke="#48C9B0" stroke-width="3" fill="none" stroke-dasharray="10,5"/>
+                            <path d="M240 285 Q280 270 320 285" stroke="#48C9B0" stroke-width="3" fill="none" stroke-dasharray="10,5"/>
+                            
+                            <!-- Buildings silhouette -->
+                            <rect x="450" y="150" width="30" height="100" fill="#4A90E2" opacity="0.3"/>
+                            <rect x="490" y="120" width="25" height="130" fill="#4A90E2" opacity="0.3"/>
+                            <rect x="525" y="140" width="35" height="110" fill="#4A90E2" opacity="0.3"/>
+                            
+                            <!-- Decorative elements -->
+                            <circle cx="500" cy="80" r="30" fill="#FFB74D" opacity="0.4"/>
+                            <circle cx="450" cy="60" r="15" fill="#48C9B0" opacity="0.5"/>
+                        </svg>
+                        <div class="geometric-pattern"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works -->
+        <section id="how-it-works" class="section how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How Darbna Works</h2>
+                    <p>Getting started is simple. Find your perfect carpool match in three easy steps.</p>
+                </div>
+                
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Search & Discover</h3>
+                        <p>Enter your route and timing preferences. Our smart matching system finds nearby drivers or passengers heading the same direction.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Connect & Match</h3>
+                        <p>Browse verified profiles with ratings and reviews. Choose your ideal travel companion and agree on pickup points and cost sharing.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Travel & Rate</h3>
+                        <p>Meet at your chosen location, enjoy the journey together, and rate your experience to help our community grow stronger.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features -->
+        <section id="features" class="section features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose Darbna?</h2>
+                    <p>Experience the benefits of smart carpooling designed for Saudi Arabia</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="card-icon mint">
+                            <span class="feature-icon">💰</span>
+                        </div>
+                        <h3>Save Money</h3>
+                        <p>Split fuel costs and tolls with fellow travelers. Regular commuters typically save 40-60% on monthly transportation expenses.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="card-icon blue">
+                            <span class="feature-icon">🚦</span>
+                        </div>
+                        <h3>Reduce Traffic</h3>
+                        <p>Fewer cars on the road means faster commutes for everyone. Join the movement toward smarter urban mobility in Saudi cities.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="card-icon amber">
+                            <span class="feature-icon">🌱</span>
+                        </div>
+                        <h3>Lower Emissions</h3>
+                        <p>Every shared ride reduces CO₂ emissions by up to 50% per person. Drive positive environmental change in your community.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="card-icon mint">
+                            <span class="feature-icon">🤝</span>
+                        </div>
+                        <h3>Build Community</h3>
+                        <p>Meet like-minded professionals, students, and neighbors. Transform your daily commute into meaningful social connections.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="card-icon blue">
+                            <span class="feature-icon">📱</span>
+                        </div>
+                        <h3>Smart Technology</h3>
+                        <p>Advanced matching algorithms, real-time notifications, and integrated messaging make carpooling seamless and efficient.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="card-icon amber">
+                            <span class="feature-icon">⏰</span>
+                        </div>
+                        <h3>Flexible Scheduling</h3>
+                        <p>One-time trips or recurring commutes - find rides that match your exact schedule across Riyadh, Jeddah, and Dammam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Safety & Trust -->
+        <section id="safety" class="section safety">
+            <div class="container">
+                <div class="safety-content">
+                    <div>
+                        <h2>Safety First, Always</h2>
+                        <p class="mb-lg">Your security and peace of mind are our top priorities. Every member of the Darbna community is verified and vetted.</p>
+                        
+                        <ul class="safety-list">
+                            <li class="safety-item">
+                                <div class="safety-icon">✓</div>
+                                <div>
+                                    <strong>Verified Identity</strong><br>
+                                    Phone number and email verification for all users
+                                </div>
+                            </li>
+                            <li class="safety-item">
+                                <div class="safety-icon">🆔</div>
+                                <div>
+                                    <strong>Driver License Check</strong><br>
+                                    Manual review of driving licenses and vehicle registration
+                                </div>
+                            </li>
+                            <li class="safety-item">
+                                <div class="safety-icon">⭐</div>
+                                <div>
+                                    <strong>Rating System</strong><br>
+                                    Community-driven ratings and reviews for every member
+                                </div>
+                            </li>
+                            <li class="safety-item">
+                                <div class="safety-icon">📍</div>
+                                <div>
+                                    <strong>Trip Sharing</strong><br>
+                                    Share trip details with trusted contacts for added security
+                                </div>
+                            </li>
+                            <li class="safety-item">
+                                <div class="safety-icon">🛡️</div>
+                                <div>
+                                    <strong>24/7 Support</strong><br>
+                                    Round-the-clock customer support for any concerns
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="trust-badge">
+                        <h3>🔒 Trusted by 50,000+ Saudi Commuters</h3>
+                        <p>Join thousands of verified drivers and passengers who trust Darbna for their daily journeys across Saudi Arabia.</p>
+                        <div style="margin-top: 1.5rem;">
+                            <strong style="font-size: 2rem; display: block;">4.8/5</strong>
+                            <span>Average user rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials -->
+        <section id="testimonials" class="section testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Our Community Says</h2>
+                    <p>Real stories from real people who've transformed their commute with Darbna</p>
+                </div>
+                
+                <div class="testimonials-carousel">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"I've been using Darbna for my daily commute from Riyadh North to the Financial District for 6 months. I've saved over 800 SAR and made genuine friendships with my regular carpool partners!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AM</div>
+                            <div class="author-info">
+                                <h4>Ahmed Al-Mansouri</h4>
+                                <span class="role">Financial Analyst, Riyadh</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"As a working mother, Darbna has been a lifesaver. I can rely on verified, professional drivers for my commute, and the cost savings help with my family's budget. The safety features give me complete peace of mind."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">FL</div>
+                            <div class="author-info">
+                                <h4>Fatima Al-Zahra</h4>
+                                <span class="role">Marketing Manager, Jeddah</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <p class="testimonial-text">"I drive from Dammam to Khobar every day for work and had empty seats going to waste. Through Darbna, I've met amazing colleagues who share the cost and make the journey enjoyable. It's a win-win!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">KA</div>
+                            <div class="author-info">
+                                <h4>Khalid Al-Rashid</h4>
+                                <span class="role">Software Engineer, Dammam</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Final CTA -->
+        <section id="get-started" class="section final-cta">
+            <div class="container">
+                <h2>Ready to Transform Your Commute?</h2>
+                <p>Join thousands of Saudis who are already saving money, reducing traffic, and building community through smart carpooling.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-secondary">I Need a Ride</a>
+                    <a href="#" class="btn btn-primary">I'm Offering Rides</a>
+                </div>
+                
+                <div style="margin-top: 2rem; opacity: 0.8;">
+                    <p>Free to join • Verified community • Available 24/7</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="logo-icon" style="width: 35px; height: 35px;">د</div>
+                        <h3>Darbna</h3>
+                    </div>
+                    <p>Connecting Saudi Arabia through smart, safe, and sustainable carpooling solutions.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <strong>Download Our App</strong><br>
+                        <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">📱 iOS</a>
+                            <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.9rem;">🤖 Android</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Riders</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Find a Ride</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Safety Guide</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Cities We Serve</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>For Drivers</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Offer Rides</a></li>
+                        <li><a href="#">Earnings Calculator</a></li>
+                        <li><a href="#">Driver Requirements</a></li>
+                        <li><a href="#">Insurance Coverage</a></li>
+                        <li><a href="#">Driver Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Darbna</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press & Media</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Darbna. All rights reserved. Made with ❤️ in Saudi Arabia.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    Operating in: Riyadh • Jeddah • Dammam • Khobar • Mecca • Medina
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Minimal JavaScript for enhanced UX -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handler
+        document.querySelector('.search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const searchData = {
+                from: formData.get('from'),
+                to: formData.get('to'),
+                date: formData.get('date'),
+                passengers: formData.get('passengers')
+            };
+            
+            // Simple demo alert - replace with actual search functionality
+            alert(`Searching for rides from ${searchData.from} to ${searchData.to} on ${searchData.date} for ${searchData.passengers} passenger(s). This is a demo - connect to your backend API for real functionality.`);
+            
+            // Here you would typically make an API call:
+            // fetch('/api/search-rides', { method: 'POST', body: JSON.stringify(searchData) })
+        });
+        
+        // Add scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for scroll animations
+        document.querySelectorAll('.card, .step, .feature-card, .testimonial').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Header background opacity on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            if (scrolled > 100) {
+                header.style.background = 'rgba(253, 253, 253, 0.98)';
+            } else {
+                header.style.background = 'rgba(253, 253, 253, 0.95)';
+            }
+        });
+        
+        // Add loading state to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Add satisfying click animation
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+        
+        // Dynamic year in footer
+        document.querySelector('.footer-bottom p').innerHTML = 
+            document.querySelector('.footer-bottom p').innerHTML.replace('2024', new Date().getFullYear());
+    </script>
+    
+    <!-- Analytics placeholder -->
+    <script>
+        // Replace with your analytics code
+        // Example: Google Analytics, Mixpanel, etc.
+        console.log('Darbna website loaded successfully');
+    </script>
+</body>
+</html>
