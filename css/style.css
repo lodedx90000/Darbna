@@ -3114,3 +3114,34 @@ img {
     font-size: 0.875rem;
   }
 }
+.admin-dashboard .dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.admin-dashboard .card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.admin-dashboard .card:hover {
+  transform: translateY(-5px);
+}
+
+.admin-dashboard .card h3 {
+  font-size: 1rem;
+  color: #333;
+}
+
+.admin-dashboard .card p {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #0c7b93;
+  margin-top: 0.5rem;
+}
