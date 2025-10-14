@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Darbna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-dashboard">
+  <header class="navbar">
+    <nav class="container">
+      <h2 class="logo">Darbna Admin</h2>
+      <a href="admin-login.html" class="btn-secondary">Logout</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Admin Dashboard</h1>
+
+    <section class="dashboard-grid">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p id="total-users">0</p>
+      </div>
+      <div class="card">
+        <h3>Total Rides</h3>
+        <p id="total-rides">0</p>
+      </div>
+      <div class="card">
+        <h3>Pending Approvals</h3>
+        <p id="pending-approvals">0</p>
+      </div>
+      <div class="card">
+        <h3>Reports</h3>
+        <p id="total-reports">0</p>
+      </div>
+    </section>
+
+    <section class="dashboard-table">
+      <h2>Recent User Registrations</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Join Date</th>
+          </tr>
+        </thead>
+        <tbody id="user-table">
+          <tr><td colspan="4">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
