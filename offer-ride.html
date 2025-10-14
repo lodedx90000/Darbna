@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Offer a ride and earn money - Share your journey with Darbna passengers">
+    <meta name="keywords" content="offer ride, driver, earn money, darbna, carpooling, post trip">
+    <title>Offer a Ride - Darbna | دربنا</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="navbar" id="navbar">
+        <nav class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h2 class="logo">Darbna <span class="logo-arabic">دربنا</span></h2>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="find-ride.html" class="nav-link">Find a ride</a>
+                <a href="offer-ride.html" class="nav-link active">Offer a ride</a>
+                <a href="how-it-works.html" class="nav-link">How it works</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <button class="profile-icon-btn" id="profile-icon-btn" aria-label="User Profile">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="profile-dropdown-menu" id="profile-dropdown-menu">
+                        <a href="login.html" class="dropdown-btn">Log In</a>
+                        <a href="signup.html" class="dropdown-btn">Sign Up</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#help" class="dropdown-link">Help Centre</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="offer-ride-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content text-center">
+                    <h1 class="hero-title">Share Your Trip & Start Earning</h1>
+                    <p class="hero-subtitle">Turn your empty seats into earnings. Share your journey with verified passengers and make travel affordable for everyone.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offer Ride Form Section -->
+        <section class="offer-ride-form-section">
+            <div class="container">
+                <div class="form-wrapper">
+                    <!-- Progress Bar -->
+                    <div class="progress-bar">
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Route Details</div>
+                        </div>
+                        <div class="progress-step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Schedule & Seats</div>
+                        </div>
+                        <div class="progress-step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Price & Review</div>
+                        </div>
+                    </div>
+
+                    <!-- Form Container -->
+                    <div class="form-container">
+                        <form id="offer-ride-form" class="offer-ride-form">
+                            <!-- Step 1: Route Details -->
+                            <div class="form-step active" id="step-1">
+                                <div class="step-header">
+                                    <h2 class="step-title">Where are you heading?</h2>
+                                    <p class="step-subtitle">Enter your departure and destination cities</p>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="departure-city" class="form-label">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            Departure City
+                                        </label>
+                                        <input type="text" id="departure-city" name="departureCity" class="form-input" placeholder="e.g., Riyadh" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="destination-city" class="form-label">
+                                            <i class="fas fa-flag-checkered"></i>
+                                            Destination City
+                                        </label>
+                                        <input type="text" id="destination-city" name="destinationCity" class="form-input" placeholder="e.g., Jeddah" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Map Placeholder -->
+                                <div class="map-placeholder">
+                                    <div class="map-content">
+                                        <i class="fas fa-map fa-3x"></i>
+                                        <p>Route visualization will appear here</p>
+                                        <small>Interactive map showing your planned route</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-primary next-step" data-next="2">
+                                        Continue <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Schedule & Seats -->
+                            <div class="form-step" id="step-2">
+                                <div class="step-header">
+                                    <h2 class="step-title">When and who can join?</h2>
+                                    <p class="step-subtitle">Set your departure time and available seats</p>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="departure-date" class="form-label">
+                                            <i class="fas fa-calendar"></i>
+                                            Departure Date
+                                        </label>
+                                        <input type="date" id="departure-date" name="departureDate" class="form-input" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="departure-time" class="form-label">
+                                            <i class="fas fa-clock"></i>
+                                            Departure Time
+                                        </label>
+                                        <input type="time" id="departure-time" name="departureTime" class="form-input" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="available-seats" class="form-label">
+                                            <i class="fas fa-users"></i>
+                                            Available Seats
+                                        </label>
+                                        <select id="available-seats" name="availableSeats" class="form-select" required>
+                                            <option value="">Select seats</option>
+                                            <option value="1">1 seat</option>
+                                            <option value="2">2 seats</option>
+                                            <option value="3">3 seats</option>
+                                            <option value="4">4 seats</option>
+                                        </select>
+                                        <small class="form-help">How many passengers can you take?</small>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="vehicle-type" class="form-label">
+                                            <i class="fas fa-car"></i>
+                                            Vehicle Type
+                                        </label>
+                                        <select id="vehicle-type" name="vehicleType" class="form-select" required>
+                                            <option value="">Select vehicle</option>
+                                            <option value="sedan">Sedan</option>
+                                            <option value="suv">SUV</option>
+                                            <option value="hatchback">Hatchback</option>
+                                            <option value="coupe">Coupe</option>
+                                            <option value="pickup">Pickup Truck</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-secondary prev-step" data-prev="1">
+                                        <i class="fas fa-arrow-left"></i> Back
+                                    </button>
+                                    <button type="button" class="btn btn-primary next-step" data-next="3">
+                                        Continue <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Price & Review -->
+                            <div class="form-step" id="step-3">
+                                <div class="step-header">
+                                    <h2 class="step-title">Set your price per seat</h2>
+                                    <p class="step-subtitle">Choose a fair price that covers your costs</p>
+                                </div>
+                                
+                                <div class="pricing-section">
+                                    <div class="form-group">
+                                        <label for="price-per-seat" class="form-label">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            Price per Seat (SAR)
+                                        </label>
+                                        <div class="price-input-wrapper">
+                                            <input type="number" id="price-per-seat" name="pricePerSeat" class="form-input price-input" placeholder="0" min="10" max="500" required>
+                                            <span class="price-currency">SAR</span>
+                                        </div>
+                                        <div class="price-recommendation">
+                                            <small>Recommended price range: 50-150 SAR based on distance</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="trip-description" class="form-label">
+                                        <i class="fas fa-comment"></i>
+                                        Trip Description (Optional)
+                                    </label>
+                                    <textarea id="trip-description" name="tripDescription" class="form-textarea" rows="4" placeholder="Share any additional details about your trip, pickup points, or preferences..."></textarea>
+                                </div>
+                                
+                                <!-- Trip Summary -->
+                                <div class="trip-summary">
+                                    <h3>Trip Summary</h3>
+                                    <div class="summary-details">
+                                        <div class="summary-row">
+                                            <span class="summary-label">Route:</span>
+                                            <span class="summary-value" id="summary-route">-</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">Date & Time:</span>
+                                            <span class="summary-value" id="summary-datetime">-</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">Available Seats:</span>
+                                            <span class="summary-value" id="summary-seats">-</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">Vehicle:</span>
+                                            <span class="summary-value" id="summary-vehicle">-</span>
+                                        </div>
+                                        <div class="summary-row">
+                                            <span class="summary-label">Price per Seat:</span>
+                                            <span class="summary-value" id="summary-price">-</span>
+                                        </div>
+                                        <div class="summary-row total-earnings">
+                                            <span class="summary-label">Total Potential Earnings:</span>
+                                            <span class="summary-value" id="summary-total">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="terms-agreement" name="termsAgreement" required>
+                                        <span class="checkmark"></span>
+                                        I agree to Darbna's <a href="#terms" class="terms-link">Terms of Service</a> and <a href="#privacy" class="terms-link">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-secondary prev-step" data-prev="2">
+                                        <i class="fas fa-arrow-left"></i> Back
+                                    </button>
+                                    <button type="submit" class="btn btn-primary btn-large">
+                                        <i class="fas fa-check"></i> Publish Ride
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <div class="container">
+                <div class="benefits-header text-center">
+                    <h2>Why Offer Rides with Darbna?</h2>
+                    <p>Join thousands of drivers earning money while helping their community</p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3>Earn Extra Income</h3>
+                        <p>Turn your regular trips into earning opportunities. Cover fuel costs and make profit.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Help the Environment</h3>
+                        <p>Reduce carbon emissions by sharing rides and making transportation more efficient.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Meet New People</h3>
+                        <p>Connect with fellow travelers and build meaningful relationships in your community.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safe & Secure</h3>
+                        <p>All passengers are verified, and our support team is available 24/7 for assistance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Darbna <span class="logo-arabic">دربنا</span></h3>
+                    <p class="footer-description">Your pick of rides at low prices across Saudi Arabia</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="how-it-works.html">How It Works</a>
+                        <a href="#careers">Careers</a>
+                        <a href="#press">Press</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#help">Help Center</a>
+                        <a href="#safety">Safety</a>
+                        <a href="#contact">Contact Us</a>
+                        <a href="#terms">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Darbna. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

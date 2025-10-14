@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find affordable rides across Saudi Arabia with Darbna - Your trusted carpooling platform">
+    <meta name="keywords" content="find ride, search rides, darbna, carpooling, passengers, travel">
+    <title>Find a Ride - Darbna | دربنا</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="navbar" id="navbar">
+        <nav class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h2 class="logo">Darbna <span class="logo-arabic">دربنا</span></h2>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="find-ride.html" class="nav-link active">Find a ride</a>
+                <a href="offer-ride.html" class="nav-link">Offer a ride</a>
+                <a href="how-it-works.html" class="nav-link">How it works</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <button class="profile-icon-btn" id="profile-icon-btn" aria-label="User Profile">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="profile-dropdown-menu" id="profile-dropdown-menu">
+                        <a href="login.html" class="dropdown-btn">Log In</a>
+                        <a href="signup.html" class="dropdown-btn">Sign Up</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#help" class="dropdown-link">Help Centre</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Sticky Search Bar -->
+    <section class="sticky-search-bar" id="sticky-search">
+        <div class="container">
+            <form class="search-fo</section>rm" id="ride-search-form">
+                <div class="search-group">
+                    <div class="search-field">
+                        <label for="from-city">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </label>
+                        <input type="text" id="from-city" name="from" placeholder="From" required>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="to-city">
+                            <i class="fas fa-flag-checkered"></i>
+                        </label>
+                        <input type="text" id="to-city" name="to" placeholder="To" required>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="travel-date">
+                            <i class="fas fa-calendar"></i>
+                        </label>
+                        <input type="date" id="travel-date" name="date" required>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="passengers-count">
+                            <i class="fas fa-user"></i>
+                        </label>
+                        <select id="passengers-count" name="passengers">
+                            <option value="1">1 passenger</option>
+                            <option value="2">2 passengers</option>
+                            <option value="3">3 passengers</option>
+                            <option value="4">4 passengers</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="find-ride-page">
+        <div class="container">
+            <div class="find-ride-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>Filter Results</h3>
+                        <button class="clear-filters" id="clear-filters">Clear All</button>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4 class="filter-title">
+                            <i class="fas fa-clock"></i>
+                            Time of Day
+                        </h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="time" value="morning">
+                                <span class="checkmark"></span>
+                                Morning (6AM - 12PM)
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="time" value="afternoon">
+                                <span class="checkmark"></span>
+                                Afternoon (12PM - 6PM)
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="time" value="evening">
+                                <span class="checkmark"></span>
+                                Evening (6PM - 12AM)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4 class="filter-title">
+                            <i class="fas fa-money-bill-wave"></i>
+                            Price Range (SAR)
+                        </h4>
+                        <div class="price-range">
+                            <input type="range" id="price-slider" min="0" max="300" value="150" class="slider">
+                            <div class="price-labels">
+                                <span>0</span>
+                                <span id="price-value">150</span>
+                                <span>300+</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4 class="filter-title">
+                            <i class="fas fa-star"></i>
+                            Driver Rating
+                        </h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="rating" value="5">
+                                <span class="checkmark"></span>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>5.0</span>
+                                </div>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="rating" value="4">
+                                <span class="checkmark"></span>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>4.0+</span>
+                                </div>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="rating" value="3">
+                                <span class="checkmark"></span>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span>3.0+</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4 class="filter-title">
+                            <i class="fas fa-car"></i>
+                            Vehicle Type
+                        </h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="vehicle" value="sedan">
+                                <span class="checkmark"></span>
+                                Sedan
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="vehicle" value="suv">
+                                <span class="checkmark"></span>
+                                SUV
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="vehicle" value="hatchback">
+                                <span class="checkmark"></span>
+                                Hatchback
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4 class="filter-title">
+                            <i class="fas fa-bolt"></i>
+                            Booking Options
+                        </h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="booking" value="instant">
+                                <span class="checkmark"></span>
+                                Instant Booking
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Results Content -->
+                <div class="results-content">
+                    <div class="results-header">
+                        <div class="results-info">
+                            <h2>Available Rides</h2>
+                            <p class="results-count">Found <span id="results-count">12</span> rides matching your search</p>
+                        </div>
+                        
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="list">
+                                <i class="fas fa-list"></i> List View
+                            </button>
+                            <button class="view-btn" data-view="map">
+                                <i class="fas fa-map"></i> Map View
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Results List -->
+                    <div class="results-list" id="results-list">
+                        <!-- Sample Ride Cards -->
+                        <div class="ride-card">
+                            <div class="ride-header">
+                                <div class="driver-info">
+                                    <div class="driver-avatar">
+                                        <img src="https://via.placeholder.com/60x60/1A5F7A/FFFFFF?text=AM" alt="Ahmed M." class="avatar-img">
+                                    </div>
+                                    <div class="driver-details">
+                                        <h3 class="driver-name">Ahmed M.</h3>
+                                        <div class="driver-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="rating-score">4.9</span>
+                                            <span class="reviews-count">(127 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ride-price">
+                                    <span class="price">85 SAR</span>
+                                    <span class="per-person">per person</span>
+                                </div>
+                            </div>
+                            
+                            <div class="ride-details">
+                                <div class="route-info">
+                                    <div class="route-points">
+                                        <div class="departure">
+                                            <i class="fas fa-circle departure-dot"></i>
+                                            <span class="city">Riyadh</span>
+                                            <span class="time">08:00 AM</span>
+                                        </div>
+                                        <div class="route-line"></div>
+                                        <div class="arrival">
+                                            <i class="fas fa-map-marker-alt arrival-dot"></i>
+                                            <span class="city">Jeddah</span>
+                                            <span class="time">01:30 PM</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="ride-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>5h 30m</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>2 seats left</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-car"></i>
+                                            <span>Toyota Camry</span>
+                                        </div>
+                                        <div class="meta-item instant-booking">
+                                            <i class="fas fa-bolt"></i>
+                                            <span>Instant Booking</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ride-actions">
+                                    <button class="btn btn-outline view-details" data-ride-id="1">View Details</button>
+                                    <button class="btn btn-primary book-ride" data-ride-id="1">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ride-card">
+                            <div class="ride-header">
+                                <div class="driver-info">
+                                    <div class="driver-avatar">
+                                        <img src="https://via.placeholder.com/60x60/FF6B35/FFFFFF?text=SA" alt="Sarah A." class="avatar-img">
+                                    </div>
+                                    <div class="driver-details">
+                                        <h3 class="driver-name">Sarah A.</h3>
+                                        <div class="driver-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <span class="rating-score">4.7</span>
+                                            <span class="reviews-count">(89 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ride-price">
+                                    <span class="price">75 SAR</span>
+                                    <span class="per-person">per person</span>
+                                </div>
+                            </div>
+                            
+                            <div class="ride-details">
+                                <div class="route-info">
+                                    <div class="route-points">
+                                        <div class="departure">
+                                            <i class="fas fa-circle departure-dot"></i>
+                                            <span class="city">Riyadh</span>
+                                            <span class="time">10:30 AM</span>
+                                        </div>
+                                        <div class="route-line"></div>
+                                        <div class="arrival">
+                                            <i class="fas fa-map-marker-alt arrival-dot"></i>
+                                            <span class="city">Jeddah</span>
+                                            <span class="time">04:00 PM</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="ride-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>5h 30m</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>1 seat left</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-car"></i>
+                                            <span>Honda CR-V</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ride-actions">
+                                    <button class="btn btn-outline view-details" data-ride-id="2">View Details</button>
+                                    <button class="btn btn-primary book-ride" data-ride-id="2">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ride-card">
+                            <div class="ride-header">
+                                <div class="driver-info">
+                                    <div class="driver-avatar">
+                                        <img src="https://via.placeholder.com/60x60/1A5F7A/FFFFFF?text=MK" alt="Mohammed K." class="avatar-img">
+                                    </div>
+                                    <div class="driver-details">
+                                        <h3 class="driver-name">Mohammed K.</h3>
+                                        <div class="driver-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="rating-score">5.0</span>
+                                            <span class="reviews-count">(45 reviews)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ride-price">
+                                    <span class="price">95 SAR</span>
+                                    <span class="per-person">per person</span>
+                                </div>
+                            </div>
+                            
+                            <div class="ride-details">
+                                <div class="route-info">
+                                    <div class="route-points">
+                                        <div class="departure">
+                                            <i class="fas fa-circle departure-dot"></i>
+                                            <span class="city">Riyadh</span>
+                                            <span class="time">02:00 PM</span>
+                                        </div>
+                                        <div class="route-line"></div>
+                                        <div class="arrival">
+                                            <i class="fas fa-map-marker-alt arrival-dot"></i>
+                                            <span class="city">Jeddah</span>
+                                            <span class="time">07:30 PM</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="ride-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>5h 30m</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>3 seats left</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-car"></i>
+                                            <span>BMW X5</span>
+                                        </div>
+                                        <div class="meta-item instant-booking">
+                                            <i class="fas fa-bolt"></i>
+                                            <span>Instant Booking</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ride-actions">
+                                    <button class="btn btn-outline view-details" data-ride-id="3">View Details</button>
+                                    <button class="btn btn-primary book-ride" data-ride-id="3">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map View (Hidden by default) -->
+                    <div class="map-view" id="map-view" style="display: none;">
+                        <div class="map-placeholder">
+                            <div class="map-content">
+                                <i class="fas fa-map fa-4x"></i>
+                                <h3>Interactive Map View</h3>
+                                <p>See all available rides on an interactive map</p>
+                                <small>Map integration would show ride routes and pickup points</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Load More -->
+                    <div class="load-more-section">
+                        <button class="btn btn-outline load-more-btn" id="load-more">
+                            Load More Rides
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Darbna <span class="logo-arabic">دربنا</span></h3>
+                    <p class="footer-description">Your pick of rides at low prices across Saudi Arabia</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="how-it-works.html">How It Works</a>
+                        <a href="#careers">Careers</a>
+                        <a href="#press">Press</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#help">Help Center</a>
+                        <a href="#safety">Safety</a>
+                        <a href="#contact">Contact Us</a>
+                        <a href="#terms">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Darbna. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

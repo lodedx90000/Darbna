@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to Darbna - Access your carpooling account">
+    <meta name="keywords" content="login, darbna, carpooling, sign in">
+    <title>Login - Darbna | دربنا</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+    <!-- Header Navigation -->
+    <header class="navbar" id="navbar">
+        <nav class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo-link">
+                    <h2 class="logo">Darbna <span class="logo-arabic">دربنا</span></h2>
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="index.html" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Form Section -->
+    <main class="auth-main">
+        <div class="auth-container">
+            <div class="auth-form-wrapper">
+                <div class="auth-header">
+                    <h1 class="auth-title">Welcome Back to Darbna</h1>
+                    <p class="auth-subtitle">Sign in to continue your journey</p>
+                </div>
+
+                <form class="auth-form" id="login-form">
+                    <div class="form-group">
+                        <label for="email-mobile" class="form-label">Email Address / Mobile Number</label>
+                        <input 
+                            type="text" 
+                            id="email-mobile" 
+                            name="email-mobile" 
+                            class="form-input"
+                            placeholder="Enter your email or mobile number"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="form-input"
+                                placeholder="Enter your password"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="password-toggle" aria-label="Toggle password visibility">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-auxiliary">
+                        <a href="#forgot-password" class="forgot-password-link">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary auth-submit-btn">
+                        <i class="fas fa-sign-in-alt"></i> Log In
+                    </button>
+
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-btn google-btn">
+                            <i class="fab fa-google"></i> Continue with Google
+                        </button>
+                        <button type="button" class="social-btn apple-btn">
+                            <i class="fab fa-apple"></i> Continue with Apple
+                        </button>
+                    </div>
+
+                    <div class="auth-footer">
+                        <p class="auth-switch">
+                            Don't have an account? 
+                            <a href="signup.html" class="auth-switch-link">Sign Up</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
