@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Darbna</title>
+
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="user-dashboard">
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <nav class="container">
+      <h2 class="logo">Darbna <span class="logo-arabic">دربنا</span></h2>
+
+      <div class="profile-dropdown" id="profileDropdown">
+        <button class="profile-icon-btn" id="profileButton">
+          <i class="fas fa-user"></i>
+        </button>
+        <div class="profile-dropdown-menu" id="profileMenu">
+          <span class="dropdown-btn" id="userNameDropdown">Loading...</span>
+          <div class="dropdown-divider"></div>
+          <a href="#settings" class="dropdown-link">Profile Settings</a>
+          <a href="#rides" class="dropdown-link">My Rides</a>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-btn logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- DASHBOARD MAIN CONTENT -->
+  <main class="container" style="padding-top: 120px;">
+
+    <!-- Welcome -->
+    <section class="fade-in">
+      <h1 class="welcome-text">Welcome, User!</h1>
+      <p style="color: var(--color-text-gray);">Here’s your current activity summary on Darbna.</p>
+    </section>
+
+    <!-- Stats Grid -->
+    <section class="dashboard-grid mt-3">
+      <div class="card">
+        <h3>Upcoming Rides</h3>
+        <p id="upcoming-rides">0</p>
+      </div>
+      <div class="card">
+        <h3>Completed Rides</h3>
+        <p id="completed-rides">0</p>
+      </div>
+      <div class="card">
+        <h3>Total Saved (SAR)</h3>
+        <p id="total-saved">0</p>
+      </div>
+      <div class="card">
+        <h3>Community Rating</h3>
+        <p id="user-rating">4.8 ⭐</p>
+      </div>
+    </section>
+
+    <!-- My Rides Table -->
+    <section id="rides" class="mt-3 fade-in">
+      <h2 class="section-title text-left">My Rides</h2>
+      <div class="results-content">
+        <table style="width:100%; border-collapse: collapse;">
+          <thead style="background-color: var(--color-primary-blue); color: var(--color-white);">
+            <tr>
+              <th style="padding: 1rem; text-align: left;">Ride ID</th>
+              <th style="padding: 1rem; text-align: left;">From</th>
+              <th style="padding: 1rem; text-align: left;">To</th>
+              <th style="padding: 1rem; text-align: left;">Date</th>
+              <th style="padding: 1rem; text-align: left;">Status</th>
+            </tr>
+          </thead>
+          <tbody id="rides-table" style="background-color: var(--color-white);">
+            <tr>
+              <td colspan="5" style="text-align:center; padding: 1rem; color: var(--color-text-gray);">
+                No rides booked yet.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Profile Settings -->
+    <section id="settings" class="mt-3 fade-in">
+      <h2 class="section-title text-left">Profile Settings</h2>
+      <div style="background: var(--color-white); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+        <form id="profile-form">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="profile-name" class="form-input" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" id="profile-email" class="form-input" placeholder="Your email" disabled>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mobile</label>
+            <input type="text" id="profile-mobile" class="form-input" placeholder="Your number">
+          </div>
+          <button type="submit" class="btn-primary mt-2">Save Changes</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = JSON.parse(localStorage.getItem("loggedInUser"));
+      if (!user || user.role !== "user") {
+        alert("Access denied.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      // Fill user data
+      document.querySelector(".welcome-text").textContent = `Hello, ${user.fullName}!`;
+      document.getElementById("userNameDropdown").textContent = user.fullName;
+      document.getElementById("profile-name").value = user.fullName;
+      document.getElementById("profile-email").value = user.email;
+      document.getElementById("profile-mobile").value = user.mobile;
+
+      // Mock ride data
+      const rides = [
+        { id: 101, from: "Riyadh", to: "Jeddah", date: "2025-11-02", status: "Upcoming" },
+        { id: 98, from: "Dammam", to: "Riyadh", date: "2025-10-09", status: "Completed" }
+      ];
+      const tbody = document.getElementById("rides-table");
+      tbody.innerHTML = rides.map(r => `
+        <tr style="border-bottom:1px solid var(--color-light-gray);">
+          <td style="padding: 1rem;">#${r.id}</td>
+          <td style="padding: 1rem;">${r.from}</td>
+          <td style="padding: 1rem;">${r.to}</td>
+          <td style="padding: 1rem;">${r.date}</td>
+          <td style="padding: 1rem; color: ${r.status === 'Completed' ? 'green' : 'orange'};">${r.status}</td>
+        </tr>
+      `).join("");
+
+      // Stats
+      document.getElementById("upcoming-rides").textContent = rides.filter(r => r.status === "Upcoming").length;
+      document.getElementById("completed-rides").textContent = rides.filter(r => r.status === "Completed").length;
+      document.getElementById("total-saved").textContent = (rides.length * 25).toFixed(2);
+
+      // Profile dropdown toggle
+      const dropdown = document.getElementById("profileDropdown");
+      const button = document.getElementById("profileButton");
+      button.addEventListener("click", () => dropdown.classList.toggle("active"));
+
+      // Profile save
+      document.getElementById("profile-form").addEventListener("submit", e => {
+        e.preventDefault();
+        const updatedUser = {
+          ...user,
+          fullName: document.getElementById("profile-name").value.trim(),
+          mobile: document.getElementById("profile-mobile").value.trim()
+        };
+        localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
+        alert("Profile updated successfully!");
+      });
+    });
+  </script>
+</body>
+</html>

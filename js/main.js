@@ -306,30 +306,44 @@ function initAnimations() {
     });
 }
 
+let navbarScrollInitialized = false;
+
 function initNavbarScroll() {
-    const navbar = document.getElementById('navbar');
-    let lastScrollTop = 0;
-    
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
-            navbar.classList.add('navbar-hidden');
-        } else {
-            // Scrolling up
-            navbar.classList.remove('navbar-hidden');
-        }
-        
-        // Add shadow when scrolled
-        if (scrollTop > 10) {
-            navbar.classList.add('navbar-scrolled');
-        } else {
-            navbar.classList.remove('navbar-scrolled');
-        }
-        
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
+  if (navbarScrollInitialized) return; // prevent duplicate listeners
+  navbarScrollInitialized = true;
+
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+
+  let lastScrollTop = 0;
+  let ticking = false;
+
+  const updateNavbar = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      navbar.classList.add('navbar-hidden');
+    } else {
+      navbar.classList.remove('navbar-hidden');
+    }
+
+    if (scrollTop > 10) {
+      navbar.classList.add('navbar-scrolled');
+    } else {
+      navbar.classList.remove('navbar-scrolled');
+    }
+
+    lastScrollTop = Math.max(scrollTop, 0);
+    ticking = false;
+  };
+
+  // Use requestAnimationFrame instead of throttling for smoother results
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateNavbar);
+      ticking = true;
+    }
+  });
 }
 
 /* ============================================
@@ -1551,3 +1565,148 @@ function handleLoadMore() {
 }
 
 console.log('New pages functionality initialized successfully!');
+
+/* =======================================================
+   AUTH & DASHBOARD SYSTEM (Additive version)
+   Unified login for admin and users — keeps old code intact
+   ======================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Hash for password safety
+  const simpleHash = str => [...str].reduce((a, c) => ((a << 5) - a) + c.charCodeAt(0) | 0, 0).toString();
+
+  // Default admin account
+  const admin = { email: "admin@darbna.sa", password: simpleHash("admin123"), role: "admin" };
+const storedAdmin = JSON.parse(localStorage.getItem("adminAccount"));
+
+if (!storedAdmin || storedAdmin.password === "admin123") {
+  // Recreate admin account if old format or missing
+  localStorage.setItem("adminAccount", JSON.stringify(admin));
+}
+
+  // ============ SIGNUP ============
+  const signupForm = document.getElementById("signup-form");
+  if (signupForm) {
+    signupForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const fullName = document.getElementById("full-name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mobile = document.getElementById("mobile-number").value.trim();
+      const password = document.getElementById("signup-password").value.trim();
+
+      if (!fullName || !email || !mobile || !password) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      if (users.some(u => u.email === email)) {
+        alert("This email is already registered");
+        return;
+      }
+
+      users.push({ fullName, email, mobile, password, role: "user" });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Signup successful! You can now log in.");
+      window.location.href = "login.html";
+    });
+  }
+
+  // ============ LOGIN ============
+// ============ UNIFIED LOGIN (Admin + User) ============
+const loginForm = document.getElementById("login-form");
+if (loginForm) {
+  loginForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const input = document.getElementById("email-mobile").value.trim().toLowerCase();
+    const password = document.getElementById("password").value.trim();
+
+    const adminData = JSON.parse(localStorage.getItem("adminAccount"));
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // --- Admin Login ---
+    if (input === adminData.email && simpleHash(password) === adminData.password) {
+      localStorage.setItem("loggedInUser", JSON.stringify({
+        ...adminData,
+        fullName: "Administrator"
+      }));
+      alert("Welcome Admin!");
+      window.location.href = "admin-dashboard.html";
+      return;
+    }
+    // Admin login (for admin-login.html)
+const adminLoginForm = document.getElementById("admin-login-form");
+if (adminLoginForm) {
+  adminLoginForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const email = document.getElementById("admin-email").value.trim().toLowerCase();
+    const password = document.getElementById("admin-password").value.trim();
+    const adminData = JSON.parse(localStorage.getItem("adminAccount"));
+
+    if (email === adminData.email && simpleHash(password) === adminData.password) {
+      localStorage.setItem("loggedInUser", JSON.stringify(adminData));
+      alert("Welcome Admin!");
+      window.location.href = "admin-dashboard.html";
+    } else {
+      alert("Invalid admin credentials.");
+    }
+  });
+}
+
+    // --- User Login ---
+    const user = users.find(u =>
+      (u.email.toLowerCase() === input || u.mobile === input) && u.password === password
+    );
+
+    if (user) {
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      alert(`Welcome ${user.fullName}!`);
+      window.location.href = "user-dashboard.html";
+    } else {
+      alert("Invalid credentials. Please try again.");
+    }
+  });
+}
+
+  // ============ DASHBOARDS ============
+  const path = window.location.pathname;
+
+  // Admin dashboard
+  if (path.includes("admin-dashboard.html")) {
+    const logged = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!logged || logged.role !== "admin") {
+      alert("Admins only!");
+      window.location.href = "login.html";
+      return;
+    }
+    document.querySelector(".page-title").textContent = `Welcome, ${logged.email}`;
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    document.getElementById("total-users").textContent = users.length;
+  }
+
+  // User dashboard
+  if (path.includes("user-dashboard.html")) {
+    const logged = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!logged || logged.role !== "user") {
+      alert("Users only!");
+      window.location.href = "login.html";
+      return;
+    }
+    const welcome = document.querySelector(".welcome-text");
+    if (welcome) welcome.textContent = `Hello, ${logged.fullName}!`;
+  }
+
+  // Logout
+  const logout = document.querySelector(".logout-btn, .btn-secondary");
+  if (logout) {
+    logout.addEventListener("click", () => {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    });
+  }
+
+});
